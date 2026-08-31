@@ -76,8 +76,8 @@ class HomeScreen extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Row(
-                    children: const [
+                  const Row(
+                    children: [
                       // Avatar Inisial Nama
                       CircleAvatar(
                         radius: 20,

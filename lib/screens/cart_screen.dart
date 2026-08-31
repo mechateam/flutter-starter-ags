@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
 // ============================================================================
-// 🛒 CARTSCREEN - KANTINKU STARTER TEMPLATE (Week 6: Navigation)
+// 🛒 CARTSCREEN - KANTINKU STARTER TEMPLATE (Week 6 & 7)
 // Alta Global School | IT Grade 10 & 11 (SHS)
 //
 // 💡 PETUNJUK SISWA:
-// Ini adalah halaman Keranjang / Checkout terakhir.
-// Halaman ini menerima data dari MenuScreen melalui constructor.
+// Ini adalah halaman Keranjang Pesanan & Konfirmasi Checkout.
+// Halaman ini menerima data nama user dan menu terpilih melalui constructor.
 // ============================================================================
 
 class CartScreen extends StatelessWidget {
@@ -27,7 +27,7 @@ class CartScreen extends StatelessWidget {
       backgroundColor: const Color(0xFFF1F5F9),
       appBar: AppBar(
         title: const Text(
-          'Keranjang Pesanan', // [GANTI DI SINI]: Judul halaman cart
+          'Keranjang Pesanan', // [GANTI DI SINI]: Judul keranjang
           style: TextStyle(fontWeight: FontWeight.bold),
         ),
         backgroundColor: const Color(0xFF0E7C86),
@@ -38,7 +38,7 @@ class CartScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Header
+            // Header Nama Pemesan
             Text(
               'Pesanan $userName',
               style: const TextStyle(
@@ -49,14 +49,14 @@ class CartScreen extends StatelessWidget {
             ),
             const SizedBox(height: 20),
 
-            // Item Card
+            // Kartu Rincian Menu yang Dipesan
             Container(
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(12),
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.black.withValues(alpha: 0.07),
+                    color: Colors.black.withValues(alpha: 0.05),
                     blurRadius: 8,
                     offset: const Offset(0, 2),
                   ),
@@ -66,13 +66,13 @@ class CartScreen extends StatelessWidget {
                 contentPadding: const EdgeInsets.all(16),
                 leading: const CircleAvatar(
                   backgroundColor: Color(0xFFE8F4FD),
-                  child: Icon(Icons.rice_bowl, color: Color(0xFF0E7C86)),
+                  child: Icon(Icons.fastfood, color: Color(0xFF0E7C86)),
                 ),
                 title: Text(
                   selectedItem,
                   style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
                 ),
-                subtitle: const Text('Jumlah: 1', style: TextStyle(color: Color(0xFF607D8B))),
+                subtitle: const Text('Jumlah: 1 Porsi', style: TextStyle(color: Color(0xFF607D8B))),
                 trailing: Text(
                   selectedPrice,
                   style: const TextStyle(
@@ -85,24 +85,31 @@ class CartScreen extends StatelessWidget {
             ),
             const SizedBox(height: 24),
 
-            // Total
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                const Text('Total Pembayaran:', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
-                Text(
-                  selectedPrice,
-                  style: const TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                    color: Color(0xFF0E7C86),
+            // Baris Total Pembayaran
+            Container(
+              padding: const EdgeInsets.all(16),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const Text('Total Pembayaran:', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+                  Text(
+                    selectedPrice,
+                    style: const TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                      color: Color(0xFF0E7C86),
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
             const Spacer(),
 
-            // Bayar Button
+            // Tombol Bayar Sekarang (Konfirmasi)
             SizedBox(
               width: double.infinity,
               height: 52,
@@ -111,21 +118,22 @@ class CartScreen extends StatelessWidget {
                   backgroundColor: const Color(0xFF0E7C86),
                   foregroundColor: Colors.white,
                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                  elevation: 2,
                 ),
                 onPressed: () {
-                  // Tampilkan dialog konfirmasi pembayaran
+                  // Tampilkan popup konfirmasi
                   showDialog(
                     context: context,
                     builder: (context) => AlertDialog(
                       title: const Text('Pesanan Berhasil!'),
-                      content: Text('$selectedItem sudah dipesan. Silakan ambil di kantin.'),
+                      content: Text('$selectedItem telah dipesan untuk $userName. Silakan ambil di kantin.'),
                       actions: [
                         TextButton(
                           onPressed: () {
                             Navigator.pop(context); // Tutup dialog
-                            Navigator.popUntil(context, (route) => route.isFirst); // Kembali ke Login
+                            Navigator.popUntil(context, (route) => route.isFirst); // Kembali ke halaman awal (Login)
                           },
-                          child: const Text('OK'),
+                          child: const Text('Kembali ke Menu Utama'),
                         ),
                       ],
                     ),

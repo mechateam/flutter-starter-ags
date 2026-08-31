@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
 // ============================================================================
-// 🌐 KANTINKU - DARTPAD STARTER WEEK 7 (All-in-One Single File)
+// KANTINKU - DARTPAD STARTER WEEK 7 (All-in-One Single File)
 // Alta Global School | IT Grade 10 & 11 (SHS)
 //
-// 💡 CARA PAKAI DI DARTPAD (https://dartpad.dev):
-// 1. Hapus semua kode bawaan di DartPad (Ctrl+A lalu Backspace).
-// 2. Copy dan Paste seluruh isi file ini ke DartPad.
-// 3. Klik tombol RUN (biru) di pojok kanan atas.
-// 4. Coba klik 'Daftar Akun Baru (Sign Up)' untuk mencoba fitur validasi form!
+// HOW TO USE ON DARTPAD (https://dartpad.dev):
+// 1. Clear all default code on DartPad (Ctrl+A then Backspace).
+// 2. Copy and paste this entire file into DartPad.
+// 3. Click the RUN button (blue) in the top right.
+// 4. Click 'Create New Account (Sign Up)' to test the Form Validation feature!
 // ============================================================================
 
 void main() {
@@ -33,7 +33,7 @@ class KantinKuApp extends StatelessWidget {
 }
 
 // ============================================================================
-// 🔐 SCREEN 1: LOGIN SCREEN
+// SCREEN 1: LOGIN SCREEN
 // ============================================================================
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -48,7 +48,7 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFF0E7C86), // [GANTI DI SINI]: Warna background
+      backgroundColor: const Color(0xFF0E7C86), // [CHANGE HERE]: Background color
       body: SafeArea(
         child: Center(
           child: SingleChildScrollView(
@@ -66,11 +66,11 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 const SizedBox(height: 24),
                 const Text(
-                  'KantinKu', // [GANTI DI SINI]: Nama aplikasi
+                  'KantinKu', // [CHANGE HERE]: App name
                   style: TextStyle(fontSize: 36, fontWeight: FontWeight.bold, color: Colors.white),
                 ),
                 const Text(
-                  'Pesan makanan kantin dengan mudah & cepat', // [GANTI DI SINI]: Tagline
+                  'Order canteen food quickly and effortlessly', // [CHANGE HERE]: Tagline
                   textAlign: TextAlign.center,
                   style: TextStyle(fontSize: 14, color: Colors.white70),
                 ),
@@ -79,7 +79,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   controller: _nameController,
                   style: const TextStyle(color: Colors.white, fontSize: 16),
                   decoration: InputDecoration(
-                    hintText: 'Masukkan nama kamu', // [GANTI DI SINI]
+                    hintText: 'Enter your name', // [CHANGE HERE]
                     hintStyle: const TextStyle(color: Colors.white54),
                     prefixIcon: const Icon(Icons.person_outline, color: Colors.white70),
                     filled: true,
@@ -106,13 +106,13 @@ class _LoginScreenState extends State<LoginScreen> {
                       elevation: 2,
                     ),
                     onPressed: () {
-                      final name = _nameController.text.trim().isEmpty ? 'Siswa AGS' : _nameController.text.trim();
+                      final name = _nameController.text.trim().isEmpty ? 'AGS Student' : _nameController.text.trim();
                       Navigator.push(
                         context,
                         MaterialPageRoute(builder: (context) => MenuScreen(userName: name)),
                       );
                     },
-                    child: const Text('Masuk', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                    child: const Text('Log In', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
                   ),
                 ),
                 const SizedBox(height: 24),
@@ -122,7 +122,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 12.0),
                       child: Text(
-                        'BELUM PUNYA AKUN?',
+                        'NEW USER?',
                         style: TextStyle(fontSize: 12, color: Colors.white.withValues(alpha: 0.8), letterSpacing: 1.1),
                       ),
                     ),
@@ -146,7 +146,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         MaterialPageRoute(builder: (context) => const SignUpScreen()),
                       );
                     },
-                    label: const Text('Daftar Akun Baru (Sign Up)', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+                    label: const Text('Create New Account (Sign Up)', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
                   ),
                 ),
               ],
@@ -165,7 +165,7 @@ class _LoginScreenState extends State<LoginScreen> {
 }
 
 // ============================================================================
-// 📝 SCREEN 2: SIGN UP SCREEN (Form & Validation Core)
+// SCREEN 2: SIGN UP SCREEN (Form & Validation Core)
 // ============================================================================
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
@@ -187,7 +187,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
     return Scaffold(
       backgroundColor: const Color(0xFFF8FAFC),
       appBar: AppBar(
-        title: const Text('Daftar Akun KantinKu', style: TextStyle(fontWeight: FontWeight.bold)),
+        title: const Text('Create KantinKu Account', style: TextStyle(fontWeight: FontWeight.bold)),
         backgroundColor: const Color(0xFF0E7C86),
         foregroundColor: Colors.white,
       ),
@@ -201,63 +201,63 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const Text(
-                    'Buat Akun Siswa Baru',
+                    'New Student Registration',
                     style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Color(0xFF0A5A61)),
                   ),
                   const SizedBox(height: 6),
                   const Text(
-                    'Lengkapi formulir di bawah ini untuk mulai memesan makanan kantin.',
+                    'Fill out the form below to start ordering canteen food.',
                     style: TextStyle(fontSize: 14, color: Color(0xFF64748B)),
                   ),
                   const SizedBox(height: 28),
 
-                  // Nama Lengkap
-                  const Text('Nama Lengkap', style: TextStyle(fontWeight: FontWeight.w600, color: Color(0xFF334155))),
+                  // Full Name
+                  const Text('Full Name', style: TextStyle(fontWeight: FontWeight.w600, color: Color(0xFF334155))),
                   const SizedBox(height: 6),
                   TextFormField(
                     controller: _nameController,
                     decoration: const InputDecoration(
-                      hintText: 'Contoh: Budi Pratama',
+                      hintText: 'e.g. Alex Johnson',
                       prefixIcon: Icon(Icons.person_outline, color: Color(0xFF0E7C86)),
                       filled: true,
                       fillColor: Colors.white,
                       border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(12))),
                     ),
                     validator: (value) {
-                      if (value == null || value.trim().isEmpty) return 'Nama lengkap tidak boleh kosong';
-                      if (value.trim().length < 3) return 'Nama minimal 3 huruf';
+                      if (value == null || value.trim().isEmpty) return 'Full name is required';
+                      if (value.trim().length < 3) return 'Name must be at least 3 characters';
                       return null;
                     },
                   ),
                   const SizedBox(height: 18),
 
-                  // Kelas / NIS
-                  const Text('Kelas / NIS', style: TextStyle(fontWeight: FontWeight.w600, color: Color(0xFF334155))),
+                  // Class / Student ID
+                  const Text('Class / Student ID', style: TextStyle(fontWeight: FontWeight.w600, color: Color(0xFF334155))),
                   const SizedBox(height: 6),
                   TextFormField(
                     controller: _classController,
                     decoration: const InputDecoration(
-                      hintText: 'Contoh: 10-B (NIS: 2026010)',
+                      hintText: 'e.g. 10-B (ID: 2026010)',
                       prefixIcon: Icon(Icons.school_outlined, color: Color(0xFF0E7C86)),
                       filled: true,
                       fillColor: Colors.white,
                       border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(12))),
                     ),
                     validator: (value) {
-                      if (value == null || value.trim().isEmpty) return 'Kelas / NIS wajib diisi';
+                      if (value == null || value.trim().isEmpty) return 'Class / Student ID is required';
                       return null;
                     },
                   ),
                   const SizedBox(height: 18),
 
                   // Password
-                  const Text('Kata Sandi', style: TextStyle(fontWeight: FontWeight.w600, color: Color(0xFF334155))),
+                  const Text('Password', style: TextStyle(fontWeight: FontWeight.w600, color: Color(0xFF334155))),
                   const SizedBox(height: 6),
                   TextFormField(
                     controller: _passwordController,
                     obscureText: _obscurePassword,
                     decoration: InputDecoration(
-                      hintText: 'Minimal 6 karakter',
+                      hintText: 'Minimum 6 characters',
                       prefixIcon: const Icon(Icons.lock_outline, color: Color(0xFF0E7C86)),
                       suffixIcon: IconButton(
                         icon: Icon(_obscurePassword ? Icons.visibility_off : Icons.visibility, color: const Color(0xFF64748B)),
@@ -268,35 +268,35 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       border: const OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(12))),
                     ),
                     validator: (value) {
-                      if (value == null || value.isEmpty) return 'Password tidak boleh kosong';
-                      if (value.length < 6) return 'Password minimal 6 karakter';
+                      if (value == null || value.isEmpty) return 'Password is required';
+                      if (value.length < 6) return 'Password must be at least 6 characters';
                       return null;
                     },
                   ),
                   const SizedBox(height: 18),
 
-                  // Konfirmasi Password
-                  const Text('Konfirmasi Kata Sandi', style: TextStyle(fontWeight: FontWeight.w600, color: Color(0xFF334155))),
+                  // Confirm Password
+                  const Text('Confirm Password', style: TextStyle(fontWeight: FontWeight.w600, color: Color(0xFF334155))),
                   const SizedBox(height: 6),
                   TextFormField(
                     controller: _confirmPasswordController,
                     obscureText: _obscurePassword,
                     decoration: const InputDecoration(
-                      hintText: 'Ulangi kata sandi di atas',
+                      hintText: 'Re-enter your password',
                       prefixIcon: Icon(Icons.lock_reset_outlined, color: Color(0xFF0E7C86)),
                       filled: true,
                       fillColor: Colors.white,
                       border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(12))),
                     ),
                     validator: (value) {
-                      if (value == null || value.isEmpty) return 'Konfirmasi password wajib diisi';
-                      if (value != _passwordController.text) return 'Password tidak cocok';
+                      if (value == null || value.isEmpty) return 'Please confirm your password';
+                      if (value != _passwordController.text) return 'Passwords do not match';
                       return null;
                     },
                   ),
                   const SizedBox(height: 32),
 
-                  // Tombol Submit
+                  // Submit Button
                   SizedBox(
                     width: double.infinity,
                     height: 52,
@@ -312,8 +312,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           final userName = _nameController.text.trim();
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(
-                              content: Text('Selamat datang, $userName! Akun berhasil dibuat.'),
+                              content: Text('Welcome, $userName! Account created successfully.'),
                               backgroundColor: const Color(0xFF0E7C86),
+                              duration: const Duration(seconds: 2),
                             ),
                           );
                           Navigator.pushReplacement(
@@ -322,14 +323,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           );
                         }
                       },
-                      child: const Text('Daftar Sekarang', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+                      child: const Text('Sign Up Now', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
                     ),
                   ),
                   const SizedBox(height: 16),
                   Center(
                     child: TextButton(
                       onPressed: () => Navigator.pop(context),
-                      child: const Text('Sudah punya akun? Masuk di sini', style: TextStyle(color: Color(0xFF0E7C86), fontWeight: FontWeight.w600)),
+                      child: const Text('Already have an account? Log in here', style: TextStyle(color: Color(0xFF0E7C86), fontWeight: FontWeight.w600)),
                     ),
                   ),
                 ],
@@ -352,7 +353,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
 }
 
 // ============================================================================
-// 🍽️ SCREEN 3: MENU SCREEN
+// SCREEN 3: MENU SCREEN
 // ============================================================================
 class MenuScreen extends StatelessWidget {
   final String userName;
@@ -362,17 +363,17 @@ class MenuScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final List<Map<String, dynamic>> menuItems = [
-      {'name': 'Nasi Goreng Spesial', 'price': 'Rp 18.000', 'icon': Icons.rice_bowl, 'stall': 'Kantin A'},
-      {'name': 'Mie Ayam Bakso',       'price': 'Rp 15.000', 'icon': Icons.ramen_dining, 'stall': 'Kantin B'},
-      {'name': 'Ayam Geprek Sambal',   'price': 'Rp 20.000', 'icon': Icons.set_meal, 'stall': 'Kantin A'},
-      {'name': 'Es Teh Manis Jumbo',   'price': 'Rp 5.000',  'icon': Icons.local_drink, 'stall': 'Kantin C'},
-      {'name': 'Gado-Gado Jakarta',    'price': 'Rp 14.000', 'icon': Icons.grass, 'stall': 'Kantin B'},
+      {'name': 'Special Fried Rice', 'price': 'Rp 18.000', 'icon': Icons.rice_bowl, 'stall': 'Stall A'},
+      {'name': 'Chicken Noodles',    'price': 'Rp 15.000', 'icon': Icons.ramen_dining, 'stall': 'Stall B'},
+      {'name': 'Crispy Chicken',     'price': 'Rp 20.000', 'icon': Icons.set_meal, 'stall': 'Stall A'},
+      {'name': 'Iced Sweet Tea',     'price': 'Rp 5.000',  'icon': Icons.local_drink, 'stall': 'Stall C'},
+      {'name': 'Vegetable Salad',    'price': 'Rp 14.000', 'icon': Icons.grass, 'stall': 'Stall B'},
     ];
 
     return Scaffold(
       backgroundColor: const Color(0xFFF1F5F9),
       appBar: AppBar(
-        title: const Text('Menu Kantin', style: TextStyle(fontWeight: FontWeight.bold)),
+        title: const Text('Canteen Menu', style: TextStyle(fontWeight: FontWeight.bold)),
         backgroundColor: const Color(0xFF0E7C86),
         foregroundColor: Colors.white,
         actions: [
@@ -413,16 +414,16 @@ class MenuScreen extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text('Halo, $userName!', style: const TextStyle(fontSize: 17, fontWeight: FontWeight.bold, color: Color(0xFF0A5A61))),
+                        Text('Hello, $userName!', style: const TextStyle(fontSize: 17, fontWeight: FontWeight.bold, color: Color(0xFF0A5A61))),
                         const SizedBox(height: 2),
-                        const Text('Mau pesan apa untuk istirahat hari ini?', style: TextStyle(fontSize: 13, color: Color(0xFF64748B))),
+                        const Text('What would you like to order for break today?', style: TextStyle(fontSize: 13, color: Color(0xFF64748B))),
                       ],
                     ),
                   ),
                 ],
               ),
             ),
-            const Text('Daftar Menu Tersedia', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Color(0xFF1E293B))),
+            const Text('Available Menu Items', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Color(0xFF1E293B))),
             const SizedBox(height: 12),
             ...menuItems.map((item) => Container(
               margin: const EdgeInsets.only(bottom: 12.0),
@@ -459,7 +460,7 @@ class MenuScreen extends StatelessWidget {
                       ),
                     );
                   },
-                  child: const Text('Pesan', style: TextStyle(fontSize: 13, fontWeight: FontWeight.bold)),
+                  child: const Text('Order', style: TextStyle(fontSize: 13, fontWeight: FontWeight.bold)),
                 ),
               ),
             )).toList(),
@@ -471,7 +472,7 @@ class MenuScreen extends StatelessWidget {
 }
 
 // ============================================================================
-// 🛒 SCREEN 4: CART SCREEN
+// SCREEN 4: CART SCREEN
 // ============================================================================
 class CartScreen extends StatelessWidget {
   final String userName;
@@ -481,7 +482,7 @@ class CartScreen extends StatelessWidget {
   const CartScreen({
     super.key,
     required this.userName,
-    this.selectedItem = 'Nasi Goreng Spesial',
+    this.selectedItem = 'Special Fried Rice',
     this.selectedPrice = 'Rp 18.000',
   });
 
@@ -490,7 +491,7 @@ class CartScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: const Color(0xFFF1F5F9),
       appBar: AppBar(
-        title: const Text('Keranjang Pesanan', style: TextStyle(fontWeight: FontWeight.bold)),
+        title: const Text('Order Cart', style: TextStyle(fontWeight: FontWeight.bold)),
         backgroundColor: const Color(0xFF0E7C86),
         foregroundColor: Colors.white,
       ),
@@ -499,7 +500,7 @@ class CartScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text('Pesanan $userName', style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Color(0xFF0A5A61))),
+            Text('Order for $userName', style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Color(0xFF0A5A61))),
             const SizedBox(height: 20),
             Container(
               decoration: BoxDecoration(
@@ -516,7 +517,7 @@ class CartScreen extends StatelessWidget {
                   child: Icon(Icons.fastfood, color: Color(0xFF0E7C86)),
                 ),
                 title: Text(selectedItem, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
-                subtitle: const Text('Jumlah: 1 Porsi', style: TextStyle(color: Color(0xFF607D8B))),
+                subtitle: const Text('Quantity: 1 Portion', style: TextStyle(color: Color(0xFF607D8B))),
                 trailing: Text(selectedPrice, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: Color(0xFF0E7C86))),
               ),
             ),
@@ -527,7 +528,7 @@ class CartScreen extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Text('Total Pembayaran:', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+                  const Text('Total Payment:', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
                   Text(selectedPrice, style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Color(0xFF0E7C86))),
                 ],
               ),
@@ -546,21 +547,21 @@ class CartScreen extends StatelessWidget {
                   showDialog(
                     context: context,
                     builder: (context) => AlertDialog(
-                      title: const Text('Pesanan Berhasil!'),
-                      content: Text('$selectedItem telah dipesan untuk $userName. Silakan ambil di kantin.'),
+                      title: const Text('Order Successful!'),
+                      content: Text('$selectedItem has been ordered for $userName. Please collect at the canteen counter.'),
                       actions: [
                         TextButton(
                           onPressed: () {
                             Navigator.pop(context);
                             Navigator.popUntil(context, (route) => route.isFirst);
                           },
-                          child: const Text('Kembali ke Menu Utama'),
+                          child: const Text('Back to Home'),
                         ),
                       ],
                     ),
                   );
                 },
-                child: const Text('Bayar Sekarang', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                child: const Text('Pay Now', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
               ),
             ),
           ],

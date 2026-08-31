@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
 // ============================================================================
-// 🛒 CARTSCREEN - KANTINKU STARTER TEMPLATE (Week 6 & 7)
+// CART SCREEN - KANTINKU STARTER TEMPLATE (Week 6 & 7)
 // Alta Global School | IT Grade 10 & 11 (SHS)
 //
-// 💡 PETUNJUK SISWA:
-// Ini adalah halaman Keranjang Pesanan & Konfirmasi Checkout.
-// Halaman ini menerima data nama user dan menu terpilih melalui constructor.
+// STUDENT GUIDE:
+// This is the Order Summary & Checkout Confirmation Screen.
+// It receives user name and selected item data via constructor arguments.
 // ============================================================================
 
 class CartScreen extends StatelessWidget {
@@ -17,7 +17,7 @@ class CartScreen extends StatelessWidget {
   const CartScreen({
     super.key,
     required this.userName,
-    this.selectedItem = 'Nasi Goreng Spesial',
+    this.selectedItem = 'Special Fried Rice',
     this.selectedPrice = 'Rp 18.000',
   });
 
@@ -27,7 +27,7 @@ class CartScreen extends StatelessWidget {
       backgroundColor: const Color(0xFFF1F5F9),
       appBar: AppBar(
         title: const Text(
-          'Keranjang Pesanan', // [GANTI DI SINI]: Judul keranjang
+          'Order Cart', // [CHANGE HERE]: Cart title
           style: TextStyle(fontWeight: FontWeight.bold),
         ),
         backgroundColor: const Color(0xFF0E7C86),
@@ -38,9 +38,9 @@ class CartScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Header Nama Pemesan
+            // Student Order Header
             Text(
-              'Pesanan $userName',
+              'Order for $userName',
               style: const TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
@@ -49,7 +49,7 @@ class CartScreen extends StatelessWidget {
             ),
             const SizedBox(height: 20),
 
-            // Kartu Rincian Menu yang Dipesan
+            // Item Details Card
             Container(
               decoration: BoxDecoration(
                 color: Colors.white,
@@ -72,7 +72,7 @@ class CartScreen extends StatelessWidget {
                   selectedItem,
                   style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
                 ),
-                subtitle: const Text('Jumlah: 1 Porsi', style: TextStyle(color: Color(0xFF607D8B))),
+                subtitle: const Text('Quantity: 1 Portion', style: TextStyle(color: Color(0xFF607D8B))),
                 trailing: Text(
                   selectedPrice,
                   style: const TextStyle(
@@ -85,7 +85,7 @@ class CartScreen extends StatelessWidget {
             ),
             const SizedBox(height: 24),
 
-            // Baris Total Pembayaran
+            // Total Payment Row
             Container(
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
@@ -95,7 +95,7 @@ class CartScreen extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Text('Total Pembayaran:', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+                  const Text('Total Payment:', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
                   Text(
                     selectedPrice,
                     style: const TextStyle(
@@ -109,7 +109,7 @@ class CartScreen extends StatelessWidget {
             ),
             const Spacer(),
 
-            // Tombol Bayar Sekarang (Konfirmasi)
+            // Pay Now Button
             SizedBox(
               width: double.infinity,
               height: 52,
@@ -121,26 +121,26 @@ class CartScreen extends StatelessWidget {
                   elevation: 2,
                 ),
                 onPressed: () {
-                  // Tampilkan popup konfirmasi
+                  // Show confirmation alert dialog
                   showDialog(
                     context: context,
                     builder: (context) => AlertDialog(
-                      title: const Text('Pesanan Berhasil!'),
-                      content: Text('$selectedItem telah dipesan untuk $userName. Silakan ambil di kantin.'),
+                      title: const Text('Order Successful!'),
+                      content: Text('$selectedItem has been ordered for $userName. Please collect at the canteen counter.'),
                       actions: [
                         TextButton(
                           onPressed: () {
-                            Navigator.pop(context); // Tutup dialog
-                            Navigator.popUntil(context, (route) => route.isFirst); // Kembali ke halaman awal (Login)
+                            Navigator.pop(context); // Close dialog
+                            Navigator.popUntil(context, (route) => route.isFirst); // Return to home/login
                           },
-                          child: const Text('Kembali ke Menu Utama'),
+                          child: const Text('Back to Home'),
                         ),
                       ],
                     ),
                   );
                 },
                 child: const Text(
-                  'Bayar Sekarang',
+                  'Pay Now',
                   style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                 ),
               ),

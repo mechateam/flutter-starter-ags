@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'cart_screen.dart';
 
 // ============================================================================
-// 🍽️ MENUSCREEN - KANTINKU STARTER TEMPLATE (Week 6 & 7)
+// MENU SCREEN - KANTINKU STARTER TEMPLATE (Week 6 & 7)
 // Alta Global School | IT Grade 10 & 11 (SHS)
 //
-// 💡 PETUNJUK SISWA:
-// File ini adalah halaman Daftar Menu yang menerima data nama dari Login/Sign Up.
-// Di file ini kamu bisa mengganti daftar makanan, stan, harga, dan ikon!
+// STUDENT GUIDE:
+// This screen displays the food menu and receives the student's name from Login / Sign Up.
+// You can customize menu items, prices, stall names, and icons!
 // ============================================================================
 
 class MenuScreen extends StatelessWidget {
@@ -17,20 +17,20 @@ class MenuScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // [GANTI DI SINI]: Sesuaikan daftar menu makanan & minuman tim kamu!
+    // [CHANGE HERE]: Customize your food & beverage items!
     final List<Map<String, dynamic>> menuItems = [
-      {'name': 'Nasi Goreng Spesial', 'price': 'Rp 18.000', 'icon': Icons.rice_bowl, 'stall': 'Kantin A'},
-      {'name': 'Mie Ayam Bakso',       'price': 'Rp 15.000', 'icon': Icons.ramen_dining, 'stall': 'Kantin B'},
-      {'name': 'Ayam Geprek Sambal',   'price': 'Rp 20.000', 'icon': Icons.set_meal, 'stall': 'Kantin A'},
-      {'name': 'Es Teh Manis Jumbo',   'price': 'Rp 5.000',  'icon': Icons.local_drink, 'stall': 'Kantin C'},
-      {'name': 'Gado-Gado Jakarta',    'price': 'Rp 14.000', 'icon': Icons.grass, 'stall': 'Kantin B'},
+      {'name': 'Special Fried Rice', 'price': 'Rp 18.000', 'icon': Icons.rice_bowl, 'stall': 'Stall A'},
+      {'name': 'Chicken Noodles',    'price': 'Rp 15.000', 'icon': Icons.ramen_dining, 'stall': 'Stall B'},
+      {'name': 'Crispy Chicken',     'price': 'Rp 20.000', 'icon': Icons.set_meal, 'stall': 'Stall A'},
+      {'name': 'Iced Sweet Tea',     'price': 'Rp 5.000',  'icon': Icons.local_drink, 'stall': 'Stall C'},
+      {'name': 'Vegetable Salad',    'price': 'Rp 14.000', 'icon': Icons.grass, 'stall': 'Stall B'},
     ];
 
     return Scaffold(
-      backgroundColor: const Color(0xFFF1F5F9), // [GANTI DI SINI]: Warna background
+      backgroundColor: const Color(0xFFF1F5F9), // [CHANGE HERE]: Background color
       appBar: AppBar(
         title: const Text(
-          'Menu Kantin', // [GANTI DI SINI]: Judul halaman menu
+          'Canteen Menu', // [CHANGE HERE]: Page title
           style: TextStyle(fontWeight: FontWeight.bold),
         ),
         backgroundColor: const Color(0xFF0E7C86),
@@ -38,10 +38,10 @@ class MenuScreen extends StatelessWidget {
         elevation: 0,
         actions: [
           IconButton(
-            tooltip: 'Lihat Keranjang',
+            tooltip: 'View Cart',
             icon: const Icon(Icons.shopping_cart_outlined),
             onPressed: () {
-              // Buka CartScreen
+              // Open CartScreen
               Navigator.push(
                 context,
                 MaterialPageRoute(
@@ -57,7 +57,7 @@ class MenuScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Kartu Salam Siswa
+            // User Greeting Card
             Container(
               width: double.infinity,
               padding: const EdgeInsets.all(16),
@@ -83,12 +83,12 @@ class MenuScreen extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'Halo, $userName!',
+                          'Hello, $userName!',
                           style: const TextStyle(fontSize: 17, fontWeight: FontWeight.bold, color: Color(0xFF0A5A61)),
                         ),
                         const SizedBox(height: 2),
                         const Text(
-                          'Mau pesan apa untuk istirahat hari ini?',
+                          'What would you like to order for break today?',
                           style: TextStyle(fontSize: 13, color: Color(0xFF64748B)),
                         ),
                       ],
@@ -98,14 +98,14 @@ class MenuScreen extends StatelessWidget {
               ),
             ),
 
-            // Judul Bagian Menu
+            // Section Title
             const Text(
-              'Daftar Menu Tersedia',
+              'Available Menu Items',
               style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Color(0xFF1E293B)),
             ),
             const SizedBox(height: 12),
 
-            // Render Kartu-Kartu Menu
+            // Render Menu Cards
             ...menuItems.map((item) => _buildMenuCard(context, item)).toList(),
           ],
         ),
@@ -113,7 +113,7 @@ class MenuScreen extends StatelessWidget {
     );
   }
 
-  // Helper widget untuk membuat kartu setiap menu makanan
+  // Helper widget to construct each menu card
   Widget _buildMenuCard(BuildContext context, Map<String, dynamic> item) {
     return Container(
       margin: const EdgeInsets.only(bottom: 12.0),
@@ -153,7 +153,7 @@ class MenuScreen extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
           ),
           onPressed: () {
-            // 🚀 Buka CartScreen membawa data item yang dipilih
+            // Push to CartScreen carrying selected item details
             Navigator.push(
               context,
               MaterialPageRoute(
@@ -165,7 +165,7 @@ class MenuScreen extends StatelessWidget {
               ),
             );
           },
-          child: const Text('Pesan', style: TextStyle(fontSize: 13, fontWeight: FontWeight.bold)),
+          child: const Text('Order', style: TextStyle(fontSize: 13, fontWeight: FontWeight.bold)),
         ),
       ),
     );

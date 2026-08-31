@@ -1,75 +1,75 @@
-# 🛒 KantinKu - Panduan Praktikum Form & Validasi (Week 7)
+# KantinKu - Flutter Lab Guide: Form & Validation (Week 7)
 **Alta Global School | IT Grade 10 & 11 (SHS)**  
 *Sprint 2: Multi-Screen Navigation, Form & State Management*
 
 ---
 
-## 🎯 Tujuan Pembelajaran Hari Ini
-Hari ini setiap kelompok akan menambahkan **Halaman Pendaftaran Akun Siswa (Sign Up Screen)** pada aplikasi KantinKu dengan fitur **Validasi Form**:
-1. Menggunakan widget `Form` dan `GlobalKey<FormState>` sebagai pengaman data.
-2. Menggunakan `TextEditingController` untuk menangkap input nama, kelas/NIS, dan password.
-3. Memasang aturan `validator` agar form tidak bisa dikirim jika ada kolom yang kosong atau password terlalu pendek.
-4. Menghubungkan alur pendaftaran ke `MenuScreen` membawa nama akun yang baru dibuat.
+## Learning Objectives
+Today, every team will implement a **Student Registration Screen (Sign Up Screen)** for their mobile app with **Form Validation**:
+1. Use the `Form` widget and `GlobalKey<FormState>` to safeguard and validate user input.
+2. Use `TextEditingController` to capture input for Full Name, Class / Student ID, and Password.
+3. Attach `validator` callbacks to prevent empty submissions and enforce minimum character rules.
+4. Connect the registration flow to `MenuScreen`, carrying the newly registered student's name forward.
 
 ---
 
-## 📢 Khusus Siswa Grade 10-B (Materi Gabungan Week 6 & 7)
-Karena minggu lalu kelas 10-B libur, tugas minggu ini menggabungkan:
-- **Week 6:** Navigasi antar halaman (`Navigator.push`, `Navigator.pop`).
-- **Week 7:** Pembuatan Form pendaftaran (`Form`, `TextEditingController`, `validator`).
+## Grade 10-B Special Notice (Weeks 6 & 7 Merged)
+Because Grade 10-B had a public holiday last week, this week's sprint combines:
+- **Week 6:** Multi-Screen Navigation (`Navigator.push`, `Navigator.pop`).
+- **Week 7:** Form Registration & Validation (`Form`, `TextEditingController`, `validator`).
 
-Semua alur sudah disatukan di template ini: `LoginScreen` ➡️ `SignUpScreen` ➡️ `MenuScreen` ➡️ `CartScreen`.
+All routes are fully connected in this template: `LoginScreen` -> `SignUpScreen` -> `MenuScreen` -> `CartScreen`.
 
 ---
 
-## 💡 Pilih Jalur Praktikum Sesuai Laptop Kamu
+## Choose Your Lab Track
 
-| Opsi | Kapan Memilih Opsi Ini? | Panduan Singkat |
+| Track | When to Choose | Quick Instructions |
 |---|---|---|
-| 🌐 **Jalur 1: Google DartPad (Web Browser)** | Laptop spek terbatas (RAM 4GB) atau belum install Flutter/IDE. | Buka **[dartpad.dev](https://dartpad.dev)**, hapus semua kode, copy isi file `dartpad_starter_week7.dart`, lalu klik **Run**. |
-| 🔵 **Jalur 2: VS Code + Chrome Web** | Rekomendasi utama untuk koding cepat dan ringan. | Buka folder project di VS Code, pilih device **`Chrome (web)`**, tekan **`F5`**. |
-| 🟢 **Jalur 3: Android Studio** | Bagi yang sudah memakai Android Studio sejak Week 1. | Buka folder di Android Studio, klik **`Pub get`**, pilih device **`Chrome (web)`**, klik tombol **Run `▶️`**. |
+| **Track 1: Google DartPad (Browser)** | Low-spec laptop (4GB RAM) or no Flutter/IDE installed. | Open **[dartpad.dev](https://dartpad.dev)**, delete all default code, copy all code from `dartpad_starter_week7.dart`, and click **Run**. |
+| **Track 2: VS Code + Chrome Web** | Recommended for fast, lightweight coding. | Open the project folder in VS Code, select target device **`Chrome (web)`**, press **`F5`**. |
+| **Track 3: Android Studio** | For students using Android Studio since Week 1. | Open the project folder in Android Studio, click **`Pub get`**, select target device **`Chrome (web)`**, click the green **Run `Play`** button. |
 
 ---
 
-## 🛠️ Panduan Koding: Yang Perlu Dimodifikasi Kelompok Kamu
+## Team Customization Guide
 
-Buka file **`lib/screens/signup_screen.dart`** dan cari tanda komentar **`[GANTI DI SINI]`**:
+Open **`lib/screens/signup_screen.dart`** and find the **`[CHANGE HERE]`** comments:
 
-### 1. Sesuaikan Judul & Tema Warna
-- Ubah judul form `'Buat Akun Siswa Baru'` sesuai konsep aplikasi tim kamu.
-- Sesuaikan warna AppBar dan tombol (`Color(0xFF0E7C86)`).
+### 1. Customize App Titles & Theme Colors
+- Update the form header `'New Student Registration'` to match your group's product concept.
+- Adjust the AppBar and button theme colors (`Color(0xFF0E7C86)`).
 
-### 2. Tambah / Modifikasi Kolom Input (TextFormField)
-Di template sudah tersedia 4 kolom input:
-- **Nama Lengkap:** Cek validator minimal 3 huruf.
-- **Kelas / NIS:** Bisa kamu ubah menjadi `'Nomor WhatsApp'` atau `'Nomor Meja'`.
-- **Kata Sandi:** Cek validator minimal 6 karakter.
-- **Konfirmasi Sandi:** Cek kecocokan dengan kata sandi utama.
+### 2. Customize Input Fields (TextFormField)
+The starter template provides 4 pre-configured fields:
+- **Full Name:** Validator checks for non-empty and minimum 3 letters.
+- **Class / Student ID:** Can be customized to `'WhatsApp Number'` or `'Table Number'`.
+- **Password:** Validator checks for minimum 6 characters.
+- **Confirm Password:** Validator verifies exact match with the password field.
 
-### 3. Coba Fitur Validasi (Uji Coba Bug)
-1. Jalankan aplikasi di browser/emulator.
-2. Klik tombol **Daftar Akun Baru (Sign Up)**.
-3. Langsung klik tombol **Daftar Sekarang** tanpa mengisi kotak apapun.
-4. **Hasil yang benar:** Garis merah dan pesan error peringatan akan muncul di bawah kotak yang kosong!
+### 3. Test Form Validation (Bug Testing)
+1. Run the app in your browser or emulator.
+2. Click the **Create New Account (Sign Up)** button.
+3. Immediately click **Sign Up Now** without filling in any fields.
+4. **Expected Result:** Clear red highlight borders and descriptive error messages will appear beneath all empty required fields!
 
 ---
 
-## ❓ Tanya Jawab & Solusi Kendala Umum (Troubleshooting)
+## Troubleshooting Guide
 
-| Kendala | Penyebab | Solusi |
+| Issue | Cause | Solution |
 |---|---|---|
-| **Pesan merah tidak muncul saat submit ditekan** | Lupa memanggil `_formKey.currentState!.validate()` | Pastikan tombol memanggil `if (_formKey.currentState!.validate())` sebelum `Navigator.push`. |
-| **Password tetap terlihat / tidak berbintang** | `obscureText` bernilai `false` | Pastikan properti `obscureText: _obscurePassword` terpasang di `TextFormField` password. |
-| **Error: A Key must be unique** | `GlobalKey` dideklarasikan di dalam method `build()` | Pindahkan deklarasi `final _formKey = GlobalKey<FormState>();` ke atas (di dalam class `_SignUpScreenState`). |
+| **Red error messages do not appear on submit** | Missing `_formKey.currentState!.validate()` call | Ensure your submit button calls `if (_formKey.currentState!.validate())` before navigating. |
+| **Password is visible in plain text** | `obscureText` is set to `false` | Ensure `obscureText: _obscurePassword` is present on the password `TextFormField`. |
+| **Error: A Key must be unique** | `GlobalKey` declared inside the `build()` method | Move `final _formKey = GlobalKey<FormState>();` to the top of `_SignUpScreenState`. |
 
 ---
 
-## 📤 Pengumpulan Tugas (Google Classroom)
+## Submission Checklist (Google Classroom)
 
-Kumpulkan bukti praktikum kelompokmu:
-1. **Screenshot 1:** Halaman Sign Up saat menampilkan pesan error validasi (ketika submit kosong).
-2. **Screenshot 2:** Halaman Sign Up saat berhasil terisi dan berpindah ke Menu dengan salam nama kamu.
-3. **Source Code:** Zip folder project atau copy link DartPad kelompokmu.
+Submit the following to **Google Classroom: Sprint 2 UI & Form Submission**:
+1. **Screenshot 1:** Sign Up screen displaying inline validation error messages (when submitted empty).
+2. **Screenshot 2:** Menu screen displaying your personalized user greeting after successful sign up.
+3. **Source Code:** Zip archive of your project or shareable public DartPad link.
 
-*Selamat bereksplorasi dan membangun aplikasi impian tim kamu! 🚀*
+*Happy building and have fun crafting your mobile app!*

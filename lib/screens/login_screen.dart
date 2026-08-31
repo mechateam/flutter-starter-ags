@@ -3,14 +3,14 @@ import 'menu_screen.dart';
 import 'signup_screen.dart';
 
 // ============================================================================
-// 🔐 LOGINSCREEN - KANTINKU STARTER TEMPLATE (Week 6 & 7)
+// LOGIN SCREEN - KANTINKU STARTER TEMPLATE (Week 6 & 7)
 // Alta Global School | IT Grade 10 & 11 (SHS)
 //
-// 💡 PETUNJUK SISWA:
-// Ini adalah halaman Login - gerbang pertama aplikasi KantinKu.
-// Di halaman ini terdapat dua tombol navigasi penting:
-// 1. Tombol 'Masuk': Membuka MenuScreen via Navigator.push.
-// 2. Tombol 'Daftar Akun Baru (Sign Up)': Membuka SignUpScreen untuk mencoba fitur Form & Validasi (Week 7).
+// STUDENT GUIDE:
+// This is the Login Screen - the entry gate of the KantinKu app.
+// Here you have two important navigation routes:
+// 1. 'Log In' button: Opens MenuScreen via Navigator.push.
+// 2. 'Create New Account (Sign Up)' button: Opens SignUpScreen (Week 7 Form Validation).
 // ============================================================================
 
 class LoginScreen extends StatefulWidget {
@@ -21,13 +21,13 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  // Controller untuk membaca nama yang diketik pada form login cepat
+  // Controller to read name input for quick login
   final TextEditingController _nameController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFF0E7C86), // [GANTI DI SINI]: Warna background login
+      backgroundColor: const Color(0xFF0E7C86), // [CHANGE HERE]: Login background color
       body: SafeArea(
         child: Center(
           child: SingleChildScrollView(
@@ -35,7 +35,7 @@ class _LoginScreenState extends State<LoginScreen> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                // Logo / Ikon Kantin
+                // Canteen Icon / Logo
                 Container(
                   padding: const EdgeInsets.all(20),
                   decoration: BoxDecoration(
@@ -46,9 +46,9 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 const SizedBox(height: 24),
 
-                // Judul Aplikasi & Tagline
+                // App Title & Tagline
                 const Text(
-                  'KantinKu', // [GANTI DI SINI]: Nama aplikasi kelompok kamu
+                  'KantinKu', // [CHANGE HERE]: Your team's app name
                   style: TextStyle(
                     fontSize: 36,
                     fontWeight: FontWeight.bold,
@@ -56,18 +56,18 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                 ),
                 const Text(
-                  'Pesan makanan kantin dengan mudah & cepat', // [GANTI DI SINI]: Tagline
+                  'Order canteen food quickly and effortlessly', // [CHANGE HERE]: Tagline
                   textAlign: TextAlign.center,
                   style: TextStyle(fontSize: 14, color: Colors.white70),
                 ),
                 const SizedBox(height: 36),
 
-                // Kotak Input Nama (Login Cepat)
+                // Quick Name Input Field
                 TextField(
                   controller: _nameController,
                   style: const TextStyle(color: Colors.white, fontSize: 16),
                   decoration: InputDecoration(
-                    hintText: 'Masukkan nama kamu', // [GANTI DI SINI]
+                    hintText: 'Enter your name', // [CHANGE HERE]
                     hintStyle: const TextStyle(color: Colors.white54),
                     prefixIcon: const Icon(Icons.person_outline, color: Colors.white70),
                     filled: true,
@@ -84,7 +84,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 const SizedBox(height: 16),
 
-                // Tombol 1: Masuk Langsung (Week 6 Navigation)
+                // Button 1: Quick Log In (Week 6 Navigation)
                 SizedBox(
                   width: double.infinity,
                   height: 52,
@@ -97,10 +97,10 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                     onPressed: () {
                       final name = _nameController.text.trim().isEmpty
-                          ? 'Siswa AGS'
+                          ? 'AGS Student'
                           : _nameController.text.trim();
 
-                      // 🚀 Navigator.push: Pindah ke MenuScreen membawa nama siswa
+                      // Navigator.push: Move forward to MenuScreen carrying student name
                       Navigator.push(
                         context,
                         MaterialPageRoute(
@@ -109,21 +109,21 @@ class _LoginScreenState extends State<LoginScreen> {
                       );
                     },
                     child: const Text(
-                      'Masuk', // [GANTI DI SINI]: Teks tombol masuk
+                      'Log In', // [CHANGE HERE]: Button text
                       style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                     ),
                   ),
                 ),
                 const SizedBox(height: 24),
 
-                // Garis Pemisah (Divider)
+                // Divider
                 Row(
                   children: [
                     const Expanded(child: Divider(color: Colors.white38)),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 12.0),
                       child: Text(
-                        'BELUM PUNYA AKUN?',
+                        'NEW USER?',
                         style: TextStyle(fontSize: 12, color: Colors.white.withValues(alpha: 0.8), letterSpacing: 1.1),
                       ),
                     ),
@@ -132,7 +132,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 const SizedBox(height: 20),
 
-                // Tombol 2: Daftar Akun Baru (Week 7 Sign Up Form)
+                // Button 2: Sign Up (Week 7 Form Validation)
                 SizedBox(
                   width: double.infinity,
                   height: 50,
@@ -144,7 +144,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                     icon: const Icon(Icons.person_add_alt_1),
                     onPressed: () {
-                      // 📝 Navigator.push: Buka halaman Pendaftaran Akun (SignUpScreen)
+                      // Navigator.push: Open registration form screen
                       Navigator.push(
                         context,
                         MaterialPageRoute(
@@ -153,7 +153,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       );
                     },
                     label: const Text(
-                      'Daftar Akun Baru (Sign Up)', // [GANTI DI SINI]: Teks tombol daftar
+                      'Create New Account (Sign Up)', // [CHANGE HERE]: Button label
                       style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                     ),
                   ),

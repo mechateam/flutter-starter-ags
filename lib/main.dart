@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'screens/login_screen.dart';
 
 // ============================================================================
-// 🚀 KANTINKU - MAIN.DART (Week 7: Form & Validation Update)
+// KANTINKU - MAIN.DART (Week 7: Form & Validation Update)
 // Alta Global School | IT Grade 10 & 11 (SHS)
 //
-// STRUKTUR APLIKASI KANTINKU:
-// 1. LoginScreen (screens/login_screen.dart) -> Gerbang masuk aplikasi
-// 2. SignUpScreen (screens/signup_screen.dart) -> Formulir registrasi & validasi (Week 7)
-// 3. MenuScreen (screens/menu_screen.dart) -> Menampilkan daftar menu kantin
-// 4. CartScreen (screens/cart_screen.dart) -> Rincian pesanan & checkout
+// APP ARCHITECTURE:
+// 1. LoginScreen (screens/login_screen.dart) -> Entry screen & quick login
+// 2. SignUpScreen (screens/signup_screen.dart) -> Registration & Form validation (Week 7)
+// 3. MenuScreen (screens/menu_screen.dart) -> Canteen food catalog
+// 4. CartScreen (screens/cart_screen.dart) -> Order summary & checkout
 // ============================================================================
 
 void main() {
@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFF0E7C86)),
         useMaterial3: true,
       ),
-      // LoginScreen adalah pintu masuk pertama aplikasi
+      // LoginScreen is the initial screen of the app
       home: const LoginScreen(),
     );
   }

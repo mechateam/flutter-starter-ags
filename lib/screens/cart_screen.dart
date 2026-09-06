@@ -1,153 +1,239 @@
 import 'package:flutter/material.dart';
 
 // ============================================================================
-// CART SCREEN - KANTINKU STARTER TEMPLATE (Week 6 & 7)
+// KANTINKU: CART SCREEN (Week 8: Reading Shared State from Parent)
 // Alta Global School | IT Grade 10 & 11 (SHS)
 //
-// STUDENT GUIDE:
-// This is the Order Summary & Checkout Confirmation Screen.
-// It receives user name and selected item data via constructor arguments.
+// WEEK 8 CONCEPTS DEMONSTRATED HERE:
+// 1. Receiving State via Constructor: CartScreen receives `cartItems` from HomeScreen.
+// 2. Stateless Architecture: CartScreen does not need its own state,
+//    it simply renders the data owned and shared by HomeScreen (Lifting State Up).
+// 3. Data Aggregation: Calculates total order price using `fold()`.
+// 4. Empty State Handling: Friendly UI when the cart has no items.
+//
+// Look for '// [CHANGE HERE]' comments to customize your team's cart screen!
 // ============================================================================
 
 class CartScreen extends StatelessWidget {
-  final String userName;
-  final String selectedItem;
-  final String selectedPrice;
+  // [CHANGE HERE]: Receives cart items stored in HomeScreen
+  final List<Map<String, dynamic>> cartItems;
 
-  const CartScreen({
-    super.key,
-    required this.userName,
-    this.selectedItem = 'Special Fried Rice',
-    this.selectedPrice = 'Rp 18.000',
-  });
+  const CartScreen({super.key, required this.cartItems});
 
   @override
   Widget build(BuildContext context) {
+    const Color brandTeal = Color(0xFF0E7C86);
+
+    // Calculate total price of all items in cart
+    final int totalPrice = cartItems.fold<int>(
+      0,
+      (sum, item) => sum + (item['price'] as int),
+    );
+
     return Scaffold(
-      backgroundColor: const Color(0xFFF1F5F9),
+      backgroundColor: const Color(0xFFF7F2EC),
       appBar: AppBar(
         title: const Text(
-          'Order Cart', // [CHANGE HERE]: Cart title
-          style: TextStyle(fontWeight: FontWeight.bold),
+          'Shopping Cart',
+          style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
         ),
-        backgroundColor: const Color(0xFF0E7C86),
-        foregroundColor: Colors.white,
+        backgroundColor: brandTeal,
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back, color: Colors.white),
+          onPressed: () => Navigator.pop(context),
+        ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
+      body: SafeArea(
+        child: cartItems.isEmpty
+            ? _buildEmptyState(context, brandTeal)
+            : _buildCartList(context, brandTeal, totalPrice),
+      ),
+    );
+  }
+
+  // --------------------------------------------------------------------------
+  // Empty state view when cart contains no items
+  // --------------------------------------------------------------------------
+  Widget _buildEmptyState(BuildContext context, Color brandColor) {
+    return Center(
+      child: Padding(
+        padding: const EdgeInsets.all(32.0),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            // Student Order Header
-            Text(
-              'Order for $userName',
-              style: const TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-                color: Color(0xFF0A5A61),
+            Container(
+              padding: const EdgeInsets.all(24),
+              decoration: const BoxDecoration(
+                color: Color(0xFFE8F4FD),
+                shape: BoxShape.circle,
               ),
+              child: Icon(Icons.remove_shopping_cart_outlined, size: 64, color: brandColor),
             ),
             const SizedBox(height: 20),
-
-            // Item Details Card
-            Container(
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(12),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black.withValues(alpha: 0.05),
-                    blurRadius: 8,
-                    offset: const Offset(0, 2),
-                  ),
-                ],
-              ),
-              child: ListTile(
-                contentPadding: const EdgeInsets.all(16),
-                leading: const CircleAvatar(
-                  backgroundColor: Color(0xFFE8F4FD),
-                  child: Icon(Icons.fastfood, color: Color(0xFF0E7C86)),
-                ),
-                title: Text(
-                  selectedItem,
-                  style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
-                ),
-                subtitle: const Text('Quantity: 1 Portion', style: TextStyle(color: Color(0xFF607D8B))),
-                trailing: Text(
-                  selectedPrice,
-                  style: const TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 16,
-                    color: Color(0xFF0E7C86),
-                  ),
-                ),
-              ),
+            const Text(
+              'Cart is Empty', // [CHANGE HERE]: Empty state title
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Color(0xFF1E293B)),
+            ),
+            const SizedBox(height: 8),
+            const Text(
+              'You have not selected any meals yet. Browse the canteen menu to place an order!',
+              textAlign: TextAlign.center,
+              style: TextStyle(fontSize: 14, color: Color(0xFF607D8B)),
             ),
             const SizedBox(height: 24),
-
-            // Total Payment Row
-            Container(
-              padding: const EdgeInsets.all(16),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(12),
+            ElevatedButton.icon(
+              onPressed: () => Navigator.pop(context),
+              icon: const Icon(Icons.restaurant_menu, color: Colors.white),
+              label: const Text('Back to Menu', style: TextStyle(color: Colors.white)),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: brandColor,
+                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
               ),
-              child: Row(
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  // --------------------------------------------------------------------------
+  // Populated cart view with list of items and checkout summary
+  // --------------------------------------------------------------------------
+  Widget _buildCartList(BuildContext context, Color brandColor, int totalPrice) {
+    return Column(
+      children: [
+        // Info bar
+        Container(
+          width: double.infinity,
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+          color: const Color(0xFFE8F4FD),
+          child: Text(
+            'Total ${cartItems.length} items ready for payment:',
+            style: const TextStyle(fontWeight: FontWeight.w600, color: Color(0xFF0A5A61)),
+          ),
+        ),
+
+        // Items list
+        Expanded(
+          child: ListView.separated(
+            padding: const EdgeInsets.all(16),
+            itemCount: cartItems.length,
+            separatorBuilder: (context, index) => const SizedBox(height: 10),
+            itemBuilder: (context, index) {
+              final item = cartItems[index];
+              return Card(
+                elevation: 1,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12),
+                  side: const BorderSide(color: Color(0xFF8E9AAF), width: 0.5),
+                ),
+                child: ListTile(
+                  leading: Container(
+                    width: 44,
+                    height: 44,
+                    alignment: Alignment.center,
+                    decoration: BoxDecoration(
+                      color: const Color(0xFFFAFAF7),
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    child: Text(
+                      item['emoji'] as String? ?? '🍽️',
+                      style: const TextStyle(fontSize: 22),
+                    ),
+                  ),
+                  title: Text(
+                    item['name'] as String,
+                    style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+                  ),
+                  subtitle: Text(
+                    item['desc'] as String? ?? 'KantinKu Order',
+                    style: const TextStyle(fontSize: 12, color: Color(0xFF607D8B)),
+                  ),
+                  trailing: Text(
+                    'Rp ${item['price']}',
+                    style: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 14,
+                      color: Color(0xFF0E7C86),
+                    ),
+                  ),
+                ),
+              );
+            },
+          ),
+        ),
+
+        // Checkout Bottom Sheet Summary
+        Container(
+          padding: const EdgeInsets.all(20),
+          decoration: BoxDecoration(
+            color: Colors.white,
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withValues(alpha: 0.06),
+                offset: const Offset(0, -3),
+                blurRadius: 10,
+              ),
+            ],
+            borderRadius: const BorderRadius.only(
+              topLeft: Radius.circular(20),
+              topRight: Radius.circular(20),
+            ),
+          ),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Text('Total Payment:', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+                  const Text(
+                    'Total Payment:',
+                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600, color: Color(0xFF1E293B)),
+                  ),
                   Text(
-                    selectedPrice,
+                    'Rp $totalPrice', // [CHANGE HERE]: Currency formatting
                     style: const TextStyle(
-                      fontSize: 18,
+                      fontSize: 20,
                       fontWeight: FontWeight.bold,
                       color: Color(0xFF0E7C86),
                     ),
                   ),
                 ],
               ),
-            ),
-            const Spacer(),
-
-            // Pay Now Button
-            SizedBox(
-              width: double.infinity,
-              height: 52,
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color(0xFF0E7C86),
-                  foregroundColor: Colors.white,
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-                  elevation: 2,
-                ),
-                onPressed: () {
-                  // Show confirmation alert dialog
-                  showDialog(
-                    context: context,
-                    builder: (context) => AlertDialog(
-                      title: const Text('Order Successful!'),
-                      content: Text('$selectedItem has been ordered for $userName. Please collect at the canteen counter.'),
-                      actions: [
-                        TextButton(
-                          onPressed: () {
-                            Navigator.pop(context); // Close dialog
-                            Navigator.popUntil(context, (route) => route.isFirst); // Return to home/login
-                          },
-                          child: const Text('Back to Home'),
-                        ),
-                      ],
+              const SizedBox(height: 16),
+              SizedBox(
+                width: double.infinity,
+                child: ElevatedButton.icon(
+                  onPressed: () {
+                    // Show confirmation SnackBar
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text('Payment of Rp $totalPrice successful! Your order is being prepared.'),
+                        backgroundColor: const Color(0xFF4CAF50),
+                        duration: const Duration(seconds: 3),
+                      ),
+                    );
+                  },
+                  icon: const Icon(Icons.payment, color: Colors.white),
+                  label: const Padding(
+                    padding: EdgeInsets.symmetric(vertical: 14.0),
+                    child: Text(
+                      'Pay Now', // [CHANGE HERE]: Pay button label
+                      style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.white),
                     ),
-                  );
-                },
-                child: const Text(
-                  'Pay Now',
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  ),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: const Color(0xFF4CAF50),
+                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                    elevation: 2,
+                  ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
-      ),
+      ],
     );
   }
 }

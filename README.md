@@ -18,7 +18,86 @@ In Week 7, you built secure input forms and validated user text entries. However
 
 ---
 
-## 2. KantinKu Week 8 Data Flow
+## 2. How to Understand This (Grade 10 Step-by-Step Guide)
+
+If terms like "state management" and "widget lifecycle" sound complicated, do not worry. The core concepts are simple once connected to everyday things you already use.
+
+### Step 1: What is "State"? (Just a Variable with a Fancy Name)
+* **State is simply data that changes while your app is running.**
+* In Instagram: your like count or follower count is a state.
+* In a mobile game: your player health or coin score is a state.
+* In **KantinKu**: your `cartItems` list (the food items you picked) is the state.
+When you launch the app, `cartItems` starts empty (`[]`). When you pick a snack, the state changes to contain that snack. That is all state is!
+
+### Step 2: Why Do We Need "State Management"? (The Classroom Snack Dilemma)
+Imagine 3 screens in your app:
+1. `HomeScreen`: Shows your canteen title and a badge with the total items (e.g. "Cart: 0 items").
+2. `MenuScreen`: Shows the food catalog where you tap "Add to Cart".
+3. `CartScreen`: Shows the final order list and total price in Rupiah.
+
+**The Problem:**
+If `MenuScreen` keeps the cart hidden in its own private memory, `CartScreen` cannot see what you picked, and `HomeScreen` will forever show `0 items`. The screens cannot talk to each other directly.
+
+**The Solution: "Lifting State Up"**
+Instead of storing the cart inside `MenuScreen`, you **lift the cart up** to their common parent widget: `HomeScreen`.
+* *Analogy*: Think of `HomeScreen` like a classroom teacher holding the master order clipboard. When `MenuScreen` or `CartScreen` opens, they look at the teacher's clipboard. Now every screen shares the exact same information.
+
+### Step 3: How Does Data Travel? (The 3-Step Hand-off)
+Here is the exact 3-step loop that makes KantinKu work:
+
+1. **Step 1: Parent Hands Data Down (Constructor Injection)**
+   When you tap "Open Menu" on `HomeScreen`, the parent opens `MenuScreen` and hands over the current clipboard:
+   ```dart
+   MenuScreen(cartSaatIni: cartItems)
+   ```
+   Now `MenuScreen` knows what is already in your cart.
+
+2. **Step 2: Child Updates and Hands Data Back Up (Navigator.pop)**
+   Inside `MenuScreen`, you tap "Add Fried Rice". When finished, you tap "Done Ordering". `MenuScreen` closes itself and returns the updated list back to the parent:
+   ```dart
+   Navigator.pop(context, _localCart);
+   ```
+
+3. **Step 3: Parent Catches It and Rebuilds the UI (setState)**
+   `HomeScreen` catches the returned list and runs `setState()`:
+   ```dart
+   final updatedCart = await Navigator.push(...);
+   if (updatedCart != null) {
+     setState(() {
+       cartItems = updatedCart; // Update parent data!
+     });
+   }
+   ```
+   **What does `setState()` do?**
+   It tells Flutter: "Data has changed! Redraw the screen right now so the new badge number appears!"
+
+### Step 4: What is the "Widget Lifecycle"? (Birth, Life, Death)
+Every screen in Flutter has a lifecycle, just like an app on your phone:
+
+* **1. Birth: `initState()`**
+  * Runs **once** when the screen is first created.
+  * Use it for: Setting up initial data or printing a console welcome greeting.
+  * *Analogy*: Putting on your school uniform before class starts.
+
+* **2. Life: `build()`**
+  * Runs every time the screen is displayed or updated by `setState()`.
+  * Use it for: Returning UI widgets (Text, Containers, Buttons).
+  * **Important Rule**: Never call `setState()` inside `build()`. That causes an infinite loop where Flutter redraws forever and crashes.
+
+* **3. Death: `dispose()`**
+  * Runs when the screen is closed permanently.
+  * Use it for: Cleaning up resources like `TextEditingController` so your device does not run out of memory.
+  * *Analogy*: Turning off the lights when leaving a room.
+
+### Summary: The 4 Golden Rules for Grade 10
+1. **Rule 1**: Store shared data in the parent (`HomeScreen`).
+2. **Rule 2**: Send data **down** using screen constructors (`ScreenName(cartItems: ...)`).
+3. **Rule 3**: Send data **up** using `Navigator.pop(context, data)`.
+4. **Rule 4**: Always wrap updates in `setState(() { ... })` so Flutter redraws the numbers on your screen.
+
+---
+
+## 3. KantinKu Week 8 Data Flow
 
 Here is the bidirectional data flow between HomeScreen, MenuScreen, and CartScreen:
 
@@ -50,7 +129,7 @@ Here is the bidirectional data flow between HomeScreen, MenuScreen, and CartScre
 
 ---
 
-## 3. Setup Guide (Choose 1 of 3 Tracks)
+## 4. Setup Guide (Choose 1 of 3 Tracks)
 
 ### Track 1: Browser / DartPad (Fastest, Zero Installation)
 1. Open your browser and navigate to [DartPad Flutter](https://dartpad.dev/flutter).
@@ -83,7 +162,7 @@ Here is the bidirectional data flow between HomeScreen, MenuScreen, and CartScre
 
 ---
 
-## 4. `[CHANGE HERE]` Customization Checklist
+## 5. `[CHANGE HERE]` Customization Checklist
 
 Give your team's application its own unique identity by customizing every `[CHANGE HERE]` tag:
 
@@ -95,7 +174,7 @@ Give your team's application its own unique identity by customizing every `[CHAN
 
 ---
 
-## 5. Note for Grade 10-B (Merged W6 + W7 + W8 Submission)
+## 6. Note for Grade 10-B (Merged W6 + W7 + W8 Submission)
 
 For students in **Grade 10-B**, due to previous public holiday scheduling, your Sprint 2 submission integrates:
 1. **Multi-Screen Navigation** (switching screens with `Navigator.push` and `pop`).
@@ -106,7 +185,7 @@ You only need to submit **1 final project ZIP file** and **1 screenshot showing 
 
 ---
 
-## 6. Troubleshooting & Common Errors
+## 7. Troubleshooting & Common Errors
 
 | Issue / Error | Root Cause | Solution |
 |---|---|---|

@@ -1,4 +1,23 @@
-# AGS Flutter Week 8: State Management & Widget Lifecycle
+# AGS Flutter Mobile App Development Bootcamp (Alta Global School)
+
+> **WEEK 12 ACTIVE MODULE: GIT COLLABORATION & TEAM WORKFLOW**
+>
+> Read the complete step-by-step beginner tutorial: [README_WEEK12.md](README_WEEK12.md)
+>
+> Learn how to verify Git, create a team GitHub repository, clone, pull, commit, and push together on the **KantinKu** shared codebase.
+
+---
+
+### Course Modules
+* **Week 12 (Current):** [Git Collaboration & Team Development Workflow](README_WEEK12.md)
+* **Week 8:** [State Management & Widget Lifecycle](README_WEEK8.md)
+* **Week 7:** [Forms & User Input Validation](README_WEEK7.md)
+* **Week 6:** [Multi-Screen Navigation & Routing](README_WEEK6.md)
+* **Grade 10-B Special:** [Merged Sprint 2 Guide](README_GRADE_10B.md)
+
+---
+
+# Previous Module Reference: Week 8 State Management & Widget Lifecycle
 
 Welcome to the **Week 8 IT Mobile App Development Bootcamp (Alta Global School)**!
 

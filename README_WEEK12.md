@@ -2,7 +2,7 @@
 
 Welcome to the **Week 12 IT Mobile App Development Bootcamp (Alta Global School)**!
 
-In Week 12, we transition from solo development to **professional team collaboration**. Instead of emailing zip files or copying code over WhatsApp, your team will use **Git and GitHub** to build your **KantinKu** mobile app together on a shared codebase.
+In Week 12, we transition from solo development to **professional team collaboration**. Instead of emailing zip files or copying code over WhatsApp, your team will use **Git and GitHub** to build your team's mobile application together on a shared codebase.
 
 If you have never used Git or GitHub before, do not worry. This guide assumes you know **nothing** about version control. Follow each step in order.
 
@@ -17,7 +17,7 @@ If you have never used Git or GitHub before, do not worry. This guide assumes yo
 ### Why We Never Email Zip Files Again
 | The Old Way (Solo Zip Files) | The Professional Way (Git & GitHub) |
 |---|---|
-| `kantinku_v1.zip`, `kantinku_v2_final.zip`, `kantinku_v2_final_fix_beneran.zip` | One single clean repository: `kantinku-team` |
+| `myapp_v1.zip`, `myapp_v2_final.zip`, `myapp_v2_final_fix_beneran.zip` | One single clean repository: `your-team-app` |
 | Dev A copies code into Dev B's folder and accidentally overwrites 3 hours of work. | Git automatically merges changes from both developers safely. |
 | Zero history: nobody knows who changed what line of code or why it broke. | Every commit records the exact author, date, and description. |
 | Only one person can test at a time. | Every teammate works on their own laptop in parallel. |
@@ -87,8 +87,8 @@ In your team of 3 or 4 students, choose **ONE person to be the Team Lead**. Only
 1. Log in to [github.com](https://github.com).
 2. In the top-right corner, click the **+** (plus) icon and select **New repository** (or go to [github.com/new](https://github.com/new)).
 3. Fill in the form:
-   * **Repository name:** `kantinku-<team-name>` (e.g. `kantinku-team-alpha` or `kantinku-group2-10b`).
-   * **Description:** `KantinKu Mobile App - Alta Global School Week 12 Sprint 2`.
+   * **Repository name:** `<your-team-app-name>` (e.g. `tasky-app`, `pocketwise`, `resq-app`, `habithero`).
+   * **Description:** `Mobile App - Alta Global School Week 12 Sprint 2`.
    * **Public / Private:** Choose **Public** (or **Private**).
    * **Add a README file:** Check this box!
    * **Add .gitignore:** Click the dropdown, type `Dart` or `Flutter`, and select it.
@@ -119,7 +119,7 @@ Every team member (including the Team Lead) must now clone the repository to the
 ### Step 5.1: Copy the Repository URL
 1. Go to your team repository page on GitHub.
 2. Click the green **<> Code** button.
-3. Under the **HTTPS** tab, click the copy icon next to the URL (it looks like `https://github.com/lead-user/kantinku-team-alpha.git`).
+3. Under the **HTTPS** tab, click the copy icon next to the URL (it looks like `https://github.com/lead-user/<your-team-app-name>.git`).
 
 ### Step 5.2: Clone Using Terminal
 1. Open your Terminal (Mac) or Command Prompt / Git Bash (Windows).
@@ -130,26 +130,26 @@ Every team member (including the Team Lead) must now clone the repository to the
    *(Windows equivalent: `cd %USERPROFILE%\Documents`)*
 3. Run `git clone` followed by the URL you copied:
    ```bash
-   git clone https://github.com/<team-lead-username>/kantinku-<team-name>.git
+   git clone https://github.com/<team-lead-username>/<your-team-app-name>.git
    ```
 4. Move into the newly created folder:
    ```bash
-   cd kantinku-<team-name>
+   cd <your-team-app-name>
    ```
 5. Open the folder in Visual Studio Code:
    ```bash
    code .
    ```
-   *(If `code .` does not open VS Code, open VS Code manually, click File > Open Folder, and choose the `kantinku-<team-name>` folder).*
+   *(If `code .` does not open VS Code, open VS Code manually, click File > Open Folder, and choose the `<your-team-app-name>` folder).*
 
 ---
 
-## 6. Phase 5: Adding the KantinKu Starter Code (Team Lead Only, Once)
+## 6. Phase 5: Adding Your Team Starter Code (Team Lead Only, Once)
 
 Right now, your repository only has `README.md` and `.gitignore`. The Team Lead needs to add the initial Flutter app code once so everyone can start working.
 
-1. Download or copy the **AGS Flutter Starter** project files (`lib/`, `pubspec.yaml`, `assets/`, `android/`, `ios/`, `web/`, etc.) into your local `kantinku-<team-name>` folder.
-2. Open terminal inside `kantinku-<team-name>`:
+1. Download or copy the **AGS Flutter Starter** project files (`lib/`, `pubspec.yaml`, `assets/`, `android/`, `ios/`, `web/`, etc.) into your local `<your-team-app-name>` folder.
+2. Open terminal inside `<your-team-app-name>`:
    ```bash
    # 1. Check which files were added
    git status
@@ -158,7 +158,7 @@ Right now, your repository only has `README.md` and `.gitignore`. The Team Lead 
    git add .
 
    # 3. Save the initial commit
-   git commit -m "feat: initial commit of KantinKu Flutter starter codebase"
+   git commit -m "feat: initial commit of team Flutter codebase"
 
    # 4. Push to GitHub
    git push origin main
@@ -283,12 +283,12 @@ To keep team development smooth and stress-free, follow these four rules:
 ## 10. Phase 9: Beginner Troubleshooting FAQ
 
 ### Problem 1: "fatal: not a git repository (or any of the parent directories): .git"
-* **What happened:** You are running Git commands from the wrong folder (e.g. `C:\Users\Name` instead of `C:\Users\Name\Documents\kantinku-team`).
+* **What happened:** You are running Git commands from the wrong folder (e.g. `C:\Users\Name` instead of `C:\Users\Name\Documents\<your-team-app-name>`).
 * **The fix:**
   1. Type `pwd` on Mac or `cd` on Windows to see what folder you are currently in.
   2. Use `cd` to enter your project folder:
      ```bash
-     cd Documents/kantinku-<team-name>
+     cd Documents/<your-team-app-name>
      ```
 
 ---

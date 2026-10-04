@@ -343,7 +343,7 @@ Or view the **Commits** tab on your GitHub repository page in your browser. Ever
 
 ---
 
-## 11. Sprint Review 1 Checklist & Assessment Rubric
+## 11. Sprint Review Checklist & Assessment Rubric
 
 At the end of Sprint 2 (Week 13), every team will present a live **5-minute Sprint Review demo**. Here is how your team is graded:
 
@@ -353,7 +353,7 @@ At the end of Sprint 2 (Week 13), every team will present a live **5-minute Spri
 | **2. Git Log Contribution** | 25 pts | `git log --oneline` shows commits from **EVERY** member of the team. No "ghost members" where only one person did all the commits! |
 | **3. Repository Hygiene** | 25 pts | Clean repository on GitHub. Proper `.gitignore` is present (no `build/` or `.dart_tool/` folders uploaded). Commit messages are descriptive (`feat:`, `fix:`), not random keystrokes. |
 | **4. Team Pitch & Demo** | 25 pts | 5-minute live demo. Every member speaks for at least 1 minute explaining the feature screen they personally built and committed. |
-| **Total** | **100 pts** | Full Sprint Review 1 Grade |
+| **Total** | **100 pts** | Full Sprint Review Grade |
 
 ---
 

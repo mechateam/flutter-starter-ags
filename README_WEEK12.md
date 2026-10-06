@@ -71,13 +71,14 @@ If both commands print your name and email, your laptop is ready!
 ### Why Do We Need to Connect / Authenticate?
 In August 2021, GitHub permanently removed support for typing your regular account password in terminal commands (`git push`, `git clone`). If you try to push code without authenticating first, Git will reject you with `fatal: Authentication failed`.
 
-To push your code to your team's repository, you must link your laptop to GitHub. Choose **ONE** of the two methods below:
-* **Option A: Connect via Visual Studio Code (Recommended, Easiest):** VS Code has a built-in credential manager. It opens a browser window, you click one button to authorize, and VS Code automatically handles all future Git logins behind the scenes without typing passwords or managing tokens.
-* **Option B: Connect via Terminal (Alternative):** Ideal if you prefer using the command line directly, or if VS Code does not prompt you to sign in.
+To push your code to your team's repository, you must link your laptop to GitHub. Choose **ONE** of the three methods below based on the editor you use:
+* **Option A: Connect via Visual Studio Code (Recommended for VS Code users):** 1-click browser OAuth login via VS Code Accounts menu.
+* **Option B: Connect via Android Studio (Recommended for Android Studio users):** 1-click browser OAuth login via Android Studio Settings menu.
+* **Option C: Connect via Terminal (Universal Command Line Method):** Ideal if you prefer using the terminal directly, or if your editor does not prompt you to sign in.
 
 ---
 
-### Step 2.2 - Option A: Connect via VS Code (Recommended, 1-Click Browser Login)
+### Step 2.2 - Option A: Connect via VS Code (For VS Code Users)
 1. Open **Visual Studio Code**.
 2. Look at the bottom-left corner of the window. Click the **Accounts icon** (the small circle with a person icon).
 3. Click **Sign in with GitHub**.
@@ -87,7 +88,22 @@ Now VS Code and Git are linked to your account. You will never need to type pass
 
 ---
 
-### Step 2.2 - Option B: Connect via Terminal (Command Line Method)
+### Step 2.2 - Option B: Connect via Android Studio (For Android Studio Users)
+1. Open **Android Studio**.
+2. Open Settings:
+   * **Windows / Linux:** Click **File > Settings** (or press `Ctrl + Alt + S`).
+   * **Mac:** Click **Android Studio > Settings** (or press `Command + ,`).
+3. In the left search bar, type `GitHub`, or navigate to **Version Control > GitHub**.
+4. Click the **+** (plus icon / Add account).
+5. Choose **Log In via GitHub...**.
+6. Your web browser will open automatically. Click the green button: **Authorize in GitHub**.
+7. Once your browser confirms "You have been successfully authorized", switch back to Android Studio. Your GitHub avatar and username will appear in the list.
+8. Click **Apply**, then click **OK**.
+Now Android Studio and your local Git are linked to your GitHub account.
+
+---
+
+### Step 2.2 - Option C: Connect via Terminal (Command Line Method)
 
 Choose either **Method B1 (GitHub CLI)** or **Method B2 (Personal Access Token)**:
 
@@ -183,11 +199,16 @@ Every team member (including the Team Lead) must now clone the repository to the
    ```bash
    cd <your-team-app-name>
    ```
-5. Open the folder in Visual Studio Code:
-   ```bash
-   code .
-   ```
-   *(If `code .` does not open VS Code, open VS Code manually, click File > Open Folder, and choose the `<your-team-app-name>` folder).*
+5. Open the folder in your code editor:
+   * **For VS Code users:**
+     ```bash
+     code .
+     ```
+     *(If `code .` does not open VS Code, open VS Code manually, click File > Open Folder, and choose the `<your-team-app-name>` folder).*
+   * **For Android Studio users:**
+     Open Android Studio, click **File > Open**, navigate to your `<your-team-app-name>` folder, and click **OK**.
+     *(Alternative GUI clone inside Android Studio: Click **File > New > Project from Version Control...**, select **GitHub**, choose `<your-team-app-name>`, and click **Clone**).*
+
 
 ---
 
@@ -228,7 +249,7 @@ Right now, your repository only has `README.md` and `.gitignore`. The Team Lead 
 Before typing commands, understand how Git moves files between 3 zones on your computer:
 
 ```
-[ 1. Working Directory ]    --> You edit files in VS Code (e.g. cart_screen.dart)
+[ 1. Working Directory ]    --> You edit files in your editor (VS Code / Android Studio)
          |
     ( git add . )
          v
@@ -264,7 +285,7 @@ If you do this every time, you will almost never see a merge conflict.
 ---
 
 ### Step 1: Check What You Changed
-After editing code in VS Code (e.g., building your cart screen), check your changes:
+After editing code in VS Code or Android Studio (e.g., building your cart screen), check your changes:
 ```bash
 git status
 ```
@@ -309,6 +330,13 @@ Send your commit to GitHub so your teammates can download it:
 git push origin main
 ```
 Open your repository on [github.com](https://github.com) in your browser. You will see your commit message and your username right at the top!
+
+> **Android Studio Users: Built-In GUI Buttons**
+> If you prefer using buttons instead of typing terminal commands, Android Studio provides Git shortcuts on the top toolbar:
+> * **Blue Arrow Down (`Ctrl + T` on Windows / `Cmd + T` on Mac):** Update Project (runs `git pull`).
+> * **Green Checkmark (`Ctrl + K` on Windows / `Cmd + K` on Mac):** Commit (opens side panel to check files, type message, and click Commit or Commit and Push).
+> * **Green Arrow Up (`Ctrl + Shift + K` on Windows / `Cmd + Shift + K` on Mac):** Push (runs `git push`).
+> * **Terminal Tab:** You can also click the **Terminal** tab at the bottom of Android Studio (`Alt + F12` on Windows, `Option + F12` on Mac) to type standard Git commands anytime.
 
 ---
 
@@ -378,6 +406,9 @@ To keep team development smooth and stress-free, follow these four rules:
      git commit -m "fix: resolve merge conflict in home_screen title"
      git push origin main
      ```
+
+* **If you use Android Studio:** A "Conflicts" dialog appears automatically. Click **Merge**. An interactive 3-way window opens showing your local code on the left and your teammate's code on the right. Click the double arrows (`>>` or `<<`) to accept the code you want, then click **Apply**. In the terminal, run `git push origin main`.
+
 
 ---
 

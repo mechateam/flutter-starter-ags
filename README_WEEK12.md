@@ -60,7 +60,7 @@ If both commands print your name and email, your laptop is ready!
 
 ---
 
-## 3. Phase 2: Create Your GitHub Account & Connect VS Code (5 Minutes)
+## 3. Phase 2: Create Your GitHub Account & Connect Your Laptop (5 Minutes)
 
 ### Step 2.1: Create a GitHub Account
 1. Open your web browser and go to [github.com](https://github.com).
@@ -68,14 +68,61 @@ If both commands print your name and email, your laptop is ready!
 3. Use your school or personal email and choose a professional username (for example, `meldi-hafizh` or `kevin-ags`).
 4. Complete the verification puzzle and confirm your email from your inbox.
 
-### Step 2.2: Sign In via VS Code (Easiest Method)
-GitHub no longer accepts typing regular passwords in the command line. The easiest way to authenticate is through Visual Studio Code:
+### Why Do We Need to Connect / Authenticate?
+In August 2021, GitHub permanently removed support for typing your regular account password in terminal commands (`git push`, `git clone`). If you try to push code without authenticating first, Git will reject you with `fatal: Authentication failed`.
+
+To push your code to your team's repository, you must link your laptop to GitHub. Choose **ONE** of the two methods below:
+* **Option A: Connect via Visual Studio Code (Recommended, Easiest):** VS Code has a built-in credential manager. It opens a browser window, you click one button to authorize, and VS Code automatically handles all future Git logins behind the scenes without typing passwords or managing tokens.
+* **Option B: Connect via Terminal (Alternative):** Ideal if you prefer using the command line directly, or if VS Code does not prompt you to sign in.
+
+---
+
+### Step 2.2 - Option A: Connect via VS Code (Recommended, 1-Click Browser Login)
 1. Open **Visual Studio Code**.
 2. Look at the bottom-left corner of the window. Click the **Accounts icon** (the small circle with a person icon).
 3. Click **Sign in with GitHub**.
 4. Your browser will open. Click the green button: **Authorize Visual Studio Code**.
 5. When prompted by your browser, click **Open Visual Studio Code**.
 Now VS Code and Git are linked to your account. You will never need to type passwords in the terminal.
+
+---
+
+### Step 2.2 - Option B: Connect via Terminal (Command Line Method)
+
+Choose either **Method B1 (GitHub CLI)** or **Method B2 (Personal Access Token)**:
+
+#### Method B1: Using GitHub CLI (If installed)
+If you have the GitHub CLI installed, run this command:
+```bash
+gh auth login
+```
+Follow the interactive prompts:
+1. **What account do you want to log into?** Select `GitHub.com`.
+2. **What is your preferred protocol for Git operations?** Select `HTTPS`.
+3. **Authenticate Git with your GitHub credentials?** Type `Y` and press Enter.
+4. **How would you like to authenticate GitHub CLI?** Select `Login with a web browser`.
+5. Copy the 8-character one-time code shown on your screen, press Enter to open your browser, paste the code, and click **Authorize github**.
+
+#### Method B2: Using a Personal Access Token (PAT) (Works on every computer)
+If you do not have GitHub CLI and do not want to use VS Code, create a secure access token:
+1. Log in to [github.com](https://github.com).
+2. Click your **profile picture** in the top-right corner, then click **Settings**.
+3. Scroll all the way down the left sidebar and click **Developer settings** (at the very bottom).
+4. Click **Personal access tokens**, then click **Tokens (classic)**.
+5. Click **Generate new token**, then choose **Generate new token (classic)**.
+6. In the **Note** box, type: `Alta IT Class`.
+7. Under **Expiration**, select `90 days`.
+8. Under **Select scopes**, check the box next to **`repo`** (Full control of private repositories).
+9. Scroll to the bottom and click the green button: **Generate token**.
+10. **IMPORTANT:** Copy the token immediately (it starts with `ghp_...`). Save it in a safe note. GitHub will never display it again!
+
+**How to use your token in terminal:**
+The first time you run `git push origin main` in your terminal, Git will prompt you:
+* **Username for 'https://github.com':** Type your GitHub username and press Enter.
+* **Password for 'https://github.com':** Paste your copied token (`ghp_...`) and press Enter.
+*(Note: Terminal hides characters while you paste your password for security. Just paste and press Enter!).*
+Git Credential Manager will remember your token, and you will not need to paste it again.
+
 
 ---
 

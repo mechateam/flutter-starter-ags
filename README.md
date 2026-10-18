@@ -1,15 +1,18 @@
 # AGS Flutter Mobile App Development Bootcamp (Alta Global School)
 
-> **WEEK 12 ACTIVE MODULE: GIT COLLABORATION & TEAM WORKFLOW**
+> **WEEK 14 ACTIVE MODULE: SPRINT 3 LOCAL STORAGE & DATA PERSISTENCE**
 >
-> Read the complete step-by-step beginner tutorial: [README_WEEK12.md](README_WEEK12.md)
+> Read the complete step-by-step beginner tutorial: [README_WEEK14.md](README_WEEK14.md)
 >
-> Learn how to verify Git, create a team GitHub repository, clone, pull, commit, and push together on the **KantinKu** shared codebase.
+> Learn how to use `shared_preferences` to save key-value data to phone storage so your team app remembers user information after restart!
+>
+> For browser testing on DartPad, run: `dartpad_starter_week14.dart`.
 
 ---
 
 ### Course Modules
-* **Week 12 (Current):** [Git Collaboration & Team Development Workflow](README_WEEK12.md)
+* **Week 14 (Current):** [Sprint 3: Local Storage & Data Persistence](README_WEEK14.md)
+* **Week 12:** [Git Collaboration & Team Development Workflow](README_WEEK12.md)
 * **Week 8:** [State Management & Widget Lifecycle](README_WEEK8.md)
 * **Week 7:** [Forms & User Input Validation](README_WEEK7.md)
 * **Week 6:** [Multi-Screen Navigation & Routing](README_WEEK6.md)

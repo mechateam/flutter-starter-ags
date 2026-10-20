@@ -151,20 +151,29 @@ class _HomeScreenState extends State<HomeScreen> {
 
 ---
 
-## Step 4: Your Homework (Very Easy!)
+## Step 4: In-Class Sprint 3 Lab (No Homework Due This Sunday!)
 
-Goal: Prove that your app can save 1 piece of information and remember it!
+**Zero homework deadline this Sunday!** You all just submitted your Week 8 and Week 12 assignments on Sunday. Today is an in-class engineering workshop to get your team app ready for Sprint 3 without deadline pressure.
 
-### What to Submit on Google Classroom:
-1. **Screenshot 1:** You typed your name in the app and tapped "Save" (Snackbar message visible).
-2. **Screenshot 2:** You completely closed the app or refreshed the page, and the app automatically displays your saved name!
-3. **GitHub Commit Link:** Link to your commit on your team repository.
+### Sprint 3 Roadmap (Weeks 14 to 17: From Storage to Beta App)
 
-### Easy Rubric (100 Points):
-* Added `shared_preferences` to `pubspec.yaml`: 25 pts
-* Data saved successfully: 25 pts
-* Data persists after app reload (Screenshot proof): 25 pts
-* GitHub commit link provided: 25 pts
+| Week | Focus | Milestone / Output |
+| :--- | :--- | :--- |
+| **Week 14 (Today)** | **Local Storage (`SharedPreferences`)** | **In-Class Workshop (Ungraded):** Add `storage_helper.dart` and persist 1 data item. |
+| **Week 15** | **Core CRUD Features** | **Feature Build:** Add, view, edit, and delete items in your team app. |
+| **Week 16** | **Flutter Packages (`pub.dev`)** | **Sprint 3 Checkpoint 1 (Graded, 50 pts):** Team commit showing persistent core features + 1 package. |
+| **Week 17** | **Testing & Code Improvement** | **Sprint 3 Checkpoint 2 (Graded, 50 pts):** Version Beta Release + 1-page Team Bug Report. |
+
+### In-Class Checklist for Today:
+1. One team member adds `shared_preferences: ^2.2.2` in `pubspec.yaml` and runs `flutter pub get`.
+2. Add `storage_helper.dart` to `lib/services/` in your team codebase.
+3. Test saving 1 key-value pair (e.g. user name, counter, or toggle) on your emulator or web screen.
+4. Commit and push your code to your team GitHub repository:
+   ```bash
+   git add .
+   git commit -m "feat: setup local storage with shared_preferences"
+   git push
+   ```
 
 ---
 

@@ -1,17 +1,18 @@
 # AGS Flutter Mobile App Development Bootcamp (Alta Global School)
 
-> **WEEK 14 ACTIVE MODULE: SPRINT 3 LOCAL STORAGE & DATA PERSISTENCE**
+> **WEEK 15 ACTIVE MODULE: SPRINT 3 LOCAL STORAGE & CORE CRUD (WEEK 14 + 15 COMBINED)**
 >
-> Read the complete step-by-step beginner tutorial: [README_WEEK14.md](README_WEEK14.md)
+> Read the complete step-by-step beginner tutorial: [README_WEEK15.md](README_WEEK15.md)
 >
-> Learn how to use `shared_preferences` to save key-value data to phone storage so your team app remembers user information after restart!
+> Template Code: Customize 6 lines in [team_crud_template.dart](team_crud_template.dart) to adapt the working screen to your team app!
 >
-> For browser testing on DartPad, run: `dartpad_starter_week14.dart`.
+> Assignment Brief: [Week14_15_IT_Combined_Assignment_Brief.md](Week14_15_IT_Combined_Assignment_Brief.md) (100 Points Total, Due Sunday 23:59 WIB).
 
 ---
 
 ### Course Modules
-* **Week 14 (Current):** [Sprint 3: Local Storage & Data Persistence](README_WEEK14.md)
+* **Week 15 (Current):** [Sprint 3: Local Storage & Core CRUD (Week 14 + 15 Combined)](README_WEEK15.md)
+* **Week 14:** [Sprint 3: Local Storage & Data Persistence](README_WEEK14.md)
 * **Week 12:** [Git Collaboration & Team Development Workflow](README_WEEK12.md)
 * **Week 8:** [State Management & Widget Lifecycle](README_WEEK8.md)
 * **Week 7:** [Forms & User Input Validation](README_WEEK7.md)

@@ -1,18 +1,16 @@
 # AGS Flutter Mobile App Development Bootcamp (Alta Global School)
 
-> **WEEK 15 ACTIVE MODULE: SPRINT 3 LOCAL STORAGE & CORE CRUD (WEEK 14 + 15 COMBINED)**
+> **WEEK 16 & 17 ACTIVE MODULE: PACKAGES & BETA POLISH (ROADMAP TO DEMO DAY)**
 >
-> Read the complete step-by-step beginner tutorial: [README_WEEK15.md](README_WEEK15.md)
+> Read the complete step-by-step guide: [README_WEEK17.md](README_WEEK17.md)
 >
-> Template Code: Customize 6 lines in [team_crud_template.dart](team_crud_template.dart) to adapt the working screen to your team app!
->
-> Assignment Brief: [Week14_15_IT_Combined_Assignment_Brief.md](Week14_15_IT_Combined_Assignment_Brief.md) (100 Points Total, Due Sunday 23:59 WIB).
+> Learn how to install packages (`shared_preferences`, `intl`), customize the two-tier template (`team_crud_template.dart`) for your team app, fix mobile glitches, and tag your `v0.3.0-beta` release.
 
 ---
 
 ### Course Modules
-* **Week 15 (Current):** [Sprint 3: Local Storage & Core CRUD (Week 14 + 15 Combined)](README_WEEK15.md)
-* **Week 14:** [Sprint 3: Local Storage & Data Persistence](README_WEEK14.md)
+* **Week 16 & 17 (Current Active):** [Sprint 3: Packages & Beta Polish](README_WEEK17.md)
+* **Week 15:** [Sprint 3: Dynamic CRUD & Local Storage](README_WEEK15.md)
 * **Week 12:** [Git Collaboration & Team Development Workflow](README_WEEK12.md)
 * **Week 8:** [State Management & Widget Lifecycle](README_WEEK8.md)
 * **Week 7:** [Forms & User Input Validation](README_WEEK7.md)

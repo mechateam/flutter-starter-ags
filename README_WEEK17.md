@@ -168,9 +168,8 @@ Remember: KantinKu is strictly Meldi's teacher demo. Find your team below and us
 
 ## 8. Combined Assignment Submission Checklist (100 Points)
 
-Submit the following 3 items to Google Classroom under `[Sprint 3] Week 16 & 17 Combined: Packages & Beta Polish`:
-1. **Screenshot 1:** Your team app running, showing your custom title, custom category chips, and formatted dates.
-2. **Screenshot 2:** Your app scrolling smoothly with the keyboard open (showing zero yellow stripes).
-3. **GitHub URL:** The link to your team's repository with the `v0.3.0-beta` tag visible.
+Submit the following 2 items to Google Classroom under `[Sprint 3] Week 16 & 17 Combined: Packages & Beta Polish`:
+1. **Screenshot:** Your team app running, showing your custom title, custom category chips, and formatted dates.
+2. **GitHub URL:** The link to your team's repository with the `v0.3.0-beta` tag visible.
 
-Full credit (100/100) is awarded when all three items are submitted!
+Full credit (100/100) is awarded when both items are submitted!

@@ -92,11 +92,10 @@ KantinKu is strictly Meldi's teacher demo. Each team customizes their own app:
 
 ## 5. Google Classroom Submission Specification
 
-Submit the following 3 items to Google Classroom before your scheduled session:
+Submit the following 2 items to Google Classroom before your scheduled session:
 
-1. **Screenshot 1:** Your app running on emulator or phone, showing your customized team title, chips, and formatted dates.
-2. **Screenshot 2:** Your app scrolling smoothly with the soft keyboard open (no overflow warnings).
-3. **GitHub URL:** Direct link to your team repository showing the `v0.3.0-beta` release tag.
+1. **Screenshot:** Your app running on emulator or phone, showing your customized team title, chips, and formatted dates.
+2. **GitHub URL:** Direct link to your team repository showing the `v0.3.0-beta` release tag.
 
 All questions can be asked during our live Google Meet sessions or posted in the Classroom stream.
 
